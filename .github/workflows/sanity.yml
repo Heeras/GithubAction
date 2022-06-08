@@ -10,7 +10,7 @@ jobs:
         uses: notiz-dev/github-action-json-property@release
         if: always()
         with:
-          path: "cypress/htmlreport/index.json"
+          path: "index.json"
           prop_path: "stats.tests"
       - name: Total Object
         if: always()
@@ -22,7 +22,7 @@ jobs:
         uses: notiz-dev/github-action-json-property@release
         if: always()
         with:
-          path: "cypress/htmlreport/index.json"
+          path: "index.json"
           prop_path: "stats.passes"
       - name: Pass Object
         if: always()
@@ -34,7 +34,7 @@ jobs:
         uses: notiz-dev/github-action-json-property@release
         if: always()
         with:
-          path: "cypress/htmlreport/index.json"
+          path: "index.json"
           prop_path: "stats.skipped"
       - name: Skipped Object
         if: always()
@@ -44,7 +44,7 @@ jobs:
         uses: notiz-dev/github-action-json-property@release
         if: always()
         with:
-          path: "cypress/htmlreport/index.json"
+          path: "index.json"
           prop_path: "stats.pending"
       - name: Pending Object
         if: always()
@@ -56,7 +56,7 @@ jobs:
         uses: notiz-dev/github-action-json-property@release
         if: always()
         with:
-          path: "cypress/htmlreport/index.json"
+          path: "index.json"
           prop_path: "stats.failures"
       - name: Failed Object
         if: always()
