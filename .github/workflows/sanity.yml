@@ -39,7 +39,7 @@ jobs:
         if: always()
         with:
           path: index.json
-          prop_path: "stats.skipped"
+          prop_path: "toJSON{stats.skipped}"
       - name: Skipped Object
         if: always()
         run: echo ${{steps.skipped.outputs.prop}}
