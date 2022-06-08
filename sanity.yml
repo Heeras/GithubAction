@@ -1,4 +1,3 @@
-name: Sanity in GCC env
 on:
   cypress-run:
     runs-on: ubuntu-20.04
