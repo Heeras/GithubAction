@@ -1,10 +1,14 @@
 name: Sanity in GCC env
 on: [push, pull_request]
 jobs:
-  cypress:
+  cypress-run:
     runs-on: ubuntu-20.04
     name: Run sanity in GCC env
     steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+      - name: Git checkout
+        uses: actions/checkout@v2
       - name: get total count from json
         id: total
         uses: notiz-dev/github-action-json-property@release
