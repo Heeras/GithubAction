@@ -10,7 +10,7 @@ jobs:
         uses: notiz-dev/github-action-json-property@release
         if: always()
         with:
-          path: "index.json"
+          path: index.json
           prop_path: "stats.tests"
       - name: Total Object
         if: always()
