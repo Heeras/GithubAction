@@ -26,7 +26,7 @@ jobs:
         uses: notiz-dev/github-action-json-property@release
         if: always()
         with:
-          path: "index.json"
+          path: index.json
           prop_path: "stats.passes"
       - name: Pass Object
         if: always()
@@ -38,8 +38,8 @@ jobs:
         uses: notiz-dev/github-action-json-property@release
         if: always()
         with:
-          path: "index.json"
-          prop_path: "stats.skipped"
+          path: index.json
+          prop_path: "stats.duration"
       - name: Skipped Object
         if: always()
         run: echo ${{steps.skipped.outputs.prop}}
@@ -48,7 +48,7 @@ jobs:
         uses: notiz-dev/github-action-json-property@release
         if: always()
         with:
-          path: "index.json"
+          path: index.json
           prop_path: "stats.pending"
       - name: Pending Object
         if: always()
@@ -60,7 +60,7 @@ jobs:
         uses: notiz-dev/github-action-json-property@release
         if: always()
         with:
-          path: "index.json"
+          path: index.json
           prop_path: "stats.failures"
       - name: Failed Object
         if: always()
