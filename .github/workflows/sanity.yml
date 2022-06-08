@@ -40,9 +40,11 @@ jobs:
         with:
           path: index.json
           prop_path: "stats.skipped"
+        continue-on-error: true
       - name: Skipped Object
         if: always()
         run: echo '${{steps.skipped.outputs.prop}}'
+        continue-on-error: true
       - name: get pending count from json
         id: pending
         uses: notiz-dev/github-action-json-property@release
