@@ -1,7 +1,6 @@
 name: Sanity in GCC env
 on:
   pull_request:
-    types: [opened, synchronize, edited, reopened, closed]
 jobs:
   cypress:
     runs-on: ubuntu-20.04
