@@ -1,4 +1,3 @@
-on:
   cypress-run:
     runs-on: ubuntu-20.04
     name: Run sanity in GCC env
