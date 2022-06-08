@@ -1,0 +1,64 @@
+name: Sanity in GCC env
+on:
+  cypress-run:
+    runs-on: ubuntu-20.04
+    name: Run sanity in GCC env
+    steps:
+      - name: get total count from json
+        id: total
+        uses: notiz-dev/github-action-json-property@release
+        if: always()
+        with:
+          path: "cypress/htmlreport/index.json"
+          prop_path: "stats.tests"
+      - name: Total Object
+        if: always()
+        run: echo ${{steps.total.outputs.prop}}
+        env:
+          TOTAL_TESTS: ${{steps.total.outputs.prop}}
+      - name: get pass count from json
+        id: pass
+        uses: notiz-dev/github-action-json-property@release
+        if: always()
+        with:
+          path: "cypress/htmlreport/index.json"
+          prop_path: "stats.passes"
+      - name: Pass Object
+        if: always()
+        run: echo ${{steps.pass.outputs.prop}}
+        env:
+          PASSED_TESTS: ${{steps.pass.outputs.prop}}
+      - name: get skipped count from json
+        id: skipped
+        uses: notiz-dev/github-action-json-property@release
+        if: always()
+        with:
+          path: "cypress/htmlreport/index.json"
+          prop_path: "stats.skipped"
+      - name: Skipped Object
+        if: always()
+        run: echo ${{steps.skipped.outputs.prop}}
+      - name: get pending count from json
+        id: pending
+        uses: notiz-dev/github-action-json-property@release
+        if: always()
+        with:
+          path: "cypress/htmlreport/index.json"
+          prop_path: "stats.pending"
+      - name: Pending Object
+        if: always()
+        run: echo ${{steps.pending.outputs.prop}}
+        env:
+          PENDING_TESTS: ${{steps.pending.outputs.prop}}
+      - name: get failed count from json
+        id: failed
+        uses: notiz-dev/github-action-json-property@release
+        if: always()
+        with:
+          path: "cypress/htmlreport/index.json"
+          prop_path: "stats.failures"
+      - name: Failed Object
+        if: always()
+        run: echo ${{steps.failed.outputs.prop}}
+        env:
+          FAILED_TESTS: ${{steps.failed.outputs.prop}}
