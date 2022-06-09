@@ -78,8 +78,17 @@ jobs:
           failed_tests=`echo $(jq -r '.stats.failures' <<< "$JSON")`
           skipped_tests=`echo $(jq -r '.stats.skipped' <<< "$JSON")`
           echo $total_tests $passed_tests $pending_tests $failed_tests $skipped_tests
+          echo "::set-output name=total_tests::$total_tests"
+          echo "::set-output name=passed_tests::$passed_tests"
+          echo "::set-output name=pending_tests::$pending_tests"
+          echo "::set-output name=failed_tests::$failed_tests"
+          echo "::set-output name=skipped_tests::$skipped_tests"
       - name: Print JSON Data
         run: |
-          echo $total_tests $passed_tests $pending_tests $failed_tests $skipped_tests
+          echo "${{steps.set_var.outputs.total_tests}}"
+          echo "${{steps.set_var.outputs.passed_tests}}"
+          echo "${{steps.set_var.outputs.pending_tests}}"
+          echo "${{steps.set_var.outputs.failed_tests}}"
+          echo "${{steps.set_var.outputs.skipped_tests}}"
 
 
