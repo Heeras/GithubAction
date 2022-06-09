@@ -1,5 +1,29 @@
 name: Sanity in GCC env
-on: [push, pull_request]
+on: push
+  workflow_dispatch:
+    inputs:
+      baseUrl:
+        type: choice
+        description: Kindly select environment
+        options:
+          - https://www-staging1/
+          - https://www-staging2/
+          - https://www-staging3/
+        required: true
+        default: "https://www-staging1/"
+      browser:
+        type: choice
+        description: Kindly select browser
+        options:
+          - chrome
+          - firefox
+        required: true
+        default: "chrome"
+      runMweb:
+        type: boolean
+        default: false
+        description: Run in mweb
+        required: true
 jobs:
   cypress-run:
     runs-on: ubuntu-20.04
