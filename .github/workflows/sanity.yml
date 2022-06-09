@@ -69,9 +69,10 @@ jobs:
         run: echo '${{steps.failed.outputs.prop}}'
         env:
           FAILED_TESTS: '${{steps.failed.outputs.prop}}'
-      - id: set_var
+      - name: Test
+        id: set_var
         run: |
-          content=`cat index.json`
+          content= cat index.json
           # the following lines are only required for multi line json
           content="${content//'%'/'%25'}"
           content="${content//$'\n'/'%0A'}"
