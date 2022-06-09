@@ -85,11 +85,22 @@ jobs:
           echo "::set-output name=Pending::$pending_tests"
           echo "::set-output name=Failed::$failed_tests"
           echo "::set-output name=Skipped::$skipped_tests"
-        continue-on-error: true
       - name: Print JSON Data
         if: always()
         run: |
-         echo -e "Total:${{steps.set_var.outputs.Total}}\nPassed:${{steps.set_var.outputs.Passed}}\nFailed:${{steps.set_var.outputs.Failed}}\nSkipped:${{steps.set_var.outputs.Skipped}}\nPending:${{steps.set_var.outputs.Pending}}"
-        continue-on-error: true
-
-
+         echo -e "Total:${{steps.set_var.outputs.Total}}\nPassed:${{steps.set_var.outputs.Passed}}\nFailed:${{steps.set_var.outputs.Failed}}\nSkipped:${{steps.set_var.outputs.Skipped}}\nPending:${{steps.set_var.outputs.Pending}}"   
+      - name: Parse BaseURL value
+        id: getURL
+        if: always()
+        run: |
+          if [ "${{ github.event.inputs.baseUrl }}" == "" ]; then
+            JSON=$(cat ./gcc-demo-staging.json)
+            url=`echo $(jq -r '.baseUrl' <<< "$JSON")`
+            echo "::set-output name=URL::$url"
+          else
+            echo ::set-output name=URL::${{ github.event.inputs.baseUrl }}
+          fi
+      - name: Print JSON Data
+        if: always()
+        run: |
+         echo -e "Total:${{steps.getURL.outputs.URL}}
