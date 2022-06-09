@@ -69,8 +69,7 @@ jobs:
         run: echo '${{steps.failed.outputs.prop}}'
         env:
           FAILED_TESTS: '${{steps.failed.outputs.prop}}'
-      - name: Test
-        id: set_var
+      - name: Get JSON Data
         run: |
           JSON=$(cat ./index.json)
           total_tests=`echo $(jq -r '.stats.tests' <<< "$JSON")`
@@ -78,6 +77,9 @@ jobs:
           pending_tests=`echo $(jq -r '.stats.pending' <<< "$JSON")`
           failed_tests=`echo $(jq -r '.stats.failures' <<< "$JSON")`
           skipped_tests=`echo $(jq -r '.stats.skipped' <<< "$JSON")`
+          echo $total_tests $passed_tests $pending_tests $failed_tests $skipped_tests
+      - name: Print JSON Data
+        run: |
           echo $total_tests $passed_tests $pending_tests $failed_tests $skipped_tests
 
 
