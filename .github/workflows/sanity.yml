@@ -73,6 +73,17 @@ jobs:
         id: set_var
         run: |
           JSON=$(cat ./index.json)
-          number=`echo $(jq -r '.stats.tests' <<< "$JSON")`
-          echo $number
+          total_suites=`echo $(jq -r '.stats.suites' <<< "$JSON")`
+          total_tests=`echo $(jq -r '.stats.tests' <<< "$JSON")`
+          passed_tests=`echo $(jq -r '.stats.passes' <<< "$JSON")`
+          pending_tests=`echo $(jq -r '.stats.pending' <<< "$JSON")`
+          failed_tests=`echo $(jq -r '.stats.failures' <<< "$JSON")`
+          skipped_tests=`echo $(jq -r '.stats.skipped' <<< "$JSON")`
+          echo $total_suites
+          echo $total_tests
+          echo $passed_tests
+          echo $pending_tests
+          echo $failed_tests
+          echo $skipped_tests
+
 
