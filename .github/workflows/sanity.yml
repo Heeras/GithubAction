@@ -130,4 +130,4 @@ jobs:
       - name: Print JSON Data
         if: always()
         run: |
-         echo -e "Total:${{steps.getURL.outputs.URL}}
+         echo -e "Total:${{steps.getURL.outputs.URL}}"
