@@ -72,8 +72,5 @@ jobs:
       - name: Test
         id: set_var
         run: |
-          stats=cat index.json | jq '.stats'
-          echo "::set-output name=statsJson::$stats"
-      - name: Print
-        run: |
-          echo "${{fromJson(steps.set_var.outputs.statsJson).tests}}"
+          JSON=$(cat ./index.json)
+          echo $JSON
