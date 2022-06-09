@@ -73,4 +73,6 @@ jobs:
         id: set_var
         run: |
           JSON=$(cat ./index.json)
-          echo $JSON
+          number=`echo $(jq -r '.stats.tests' <<< "$JSON")`
+          echo $number
+
