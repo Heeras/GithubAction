@@ -87,7 +87,7 @@ jobs:
         continue-on-error: true
       - name: Print JSON Data
         run: |
-         echo "Total:${{steps.set_var.outputs.Total}} Passed:${{steps.set_var.outputs.Passed}}} Pending:${{steps.set_var.outputs.Pending}} Failed:${{steps.set_var.outputs.Failed}} Skipped:${{steps.set_var.outputs.Skipped}}"
+         echo "Total:${{steps.set_var.outputs.Total}} Passed:${{steps.set_var.outputs.Passed}} Pending:${{steps.set_var.outputs.Pending}} Failed:${{steps.set_var.outputs.Failed}} Skipped:${{steps.set_var.outputs.Skipped}}"
         continue-on-error: true
 
 
