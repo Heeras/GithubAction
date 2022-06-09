@@ -2,7 +2,7 @@ name: Sanity in GCC env
 on:
   push:
     branches:
-    - master
+      - master
   workflow_dispatch:
     inputs:
       baseUrl:
